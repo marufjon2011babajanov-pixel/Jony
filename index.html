@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Kublar Kamalak Ranglarida</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, indigo, violet, brown, grey, pink, lime, magenta, teal, navy, maroon, olive, gold, silver);
+      background-size: 500% 500%;
+      animation: rainbowBg 30s linear infinite;
+      perspective: 1200px;
+    }
+
+    @keyframes rainbowBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .orbit {
+      width: 700px;
+      height: 700px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 12s linear infinite;
+    }
+
+    @keyframes spin {
+      0%   { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .cube {
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      transform-style: preserve-3d;
+      animation: cubeSpin 1.2s linear infinite, rainbowColors 15s linear infinite;
+      border-radius: 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+
+    #cube2 {
+      animation-duration: 0.8s, 15s; /* ikkinchi kub birinchisidan tezroq aylanish */
+    }
+
+    @keyframes cubeSpin {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    @keyframes rainbowColors {
+      0% { background: red; }
+      14% { background: orange; }
+      28% { background: yellow; }
+      42% { background: green; }
+      56% { background: cyan; }
+      70% { background: blue; }
+      84% { background: violet; }
+      100% { background: red; }
+    }
+
+    .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.45);
+    }
+
+    .front  { transform: translateZ(60px); }
+    .back   { transform: rotateY(180deg) translateZ(60px); }
+    .right  { transform: rotateY(90deg)  translateZ(60px); }
+    .left   { transform: rotateY(-90deg) translateZ(60px); }
+    .top    { transform: rotateX(90deg)  translateZ(60px); }
+    .bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+    .trail {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.2);
+      filter: blur(6px);
+      pointer-events: none;
+      animation: fadeTrail 1s forwards;
+    }
+
+    @keyframes fadeTrail {
+      0% { opacity: 0.5; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="orbit">
+    <div class="cube" id="cube1" style="left:-80px; top:-80px;">
+      <div class="face front"></div>
+      <div class="face back"></div>
+      <div class="face right"></div>
+      <div class="face left"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div>
+    <div class="cube" id="cube2" style="left:80px; top:80px;">
+      <div class="face front"></div>
+      <div class="face back"></div>
+      <div class="face right"></div>
+      <div class="face left"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div>
+  </div>
+
+  <script>
+    const cubes = [document.getElementById('cube1'), document.getElementById('cube2')];
+
+    setInterval(() => {
+      cubes.forEach(cube => {
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        trail.style.top = cube.offsetTop + 'px';
+        trail.style.left = cube.offsetLeft + 'px';
+        document.body.appendChild(trail);
+        setTimeout(() => { trail.remove(); }, 1000);
+      });
+    }, 150);
+  </script>
+</body>
+</html>

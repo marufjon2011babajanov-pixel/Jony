@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            background-color: yellow ;
-        }
-     h1{
-   color:red;
-   border:10px solid green;
-   border-radius:50px;
-   text-align:center;-
-   padding: 20px ;
-   background-color:blue;
-     }
+ body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(
+        270deg, 
+        red, orange, yellow, green, cyan, blue, indigo, violet,
+        brown, grey, pink, lime, magenta, teal, navy, maroon,
+        olive, gold, silver
+      );
+      background-size: 500% 500%;
+      animation: rainbowBg 30s linear infinite;
+      perspective: 1200px;
+    }
+
+    @keyframes rainbowBg {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
     </style>
 </head>
 <body>
-<h1><?=$i?></h1>
-<hr>
+    
 </body>
-</html>
