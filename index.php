@@ -1,26 +1,44 @@
 <?php
-function tubmi($son){
-    if($son<2)  
-    return false;
-    for($i=2; $i<=sqrt($son); $i++) {
-        if($son%$i==0)
-         return false;
-    }
-    return true;
+function b($a){
+if($a<2)  
+return false;
+for($i=2; $i<=sqrt($a); $i++){
+if($a%$i==0)
+return false;
 }
-
-$n=3; 
-$yigindi=0;
-
-for ($i=$n;$i<=10;$i++) {
-    if(tubmi($i)){
-        echo $i . " ";
-        $yigindi+=$i;
-    }
+return true;
 }
-
-echo "<br>Yig‘indisi: " . $yigindi;
+$n=100;  
+$a=0;
+for ($i=2; $i<=$n; $i++) {
+if(b($i)){
+echo $i . " ";
+$a++;
+}
+}
+echo "<br>jami tup sonla  " . $a;
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,13 +62,14 @@ echo "<br>Yig‘indisi: " . $yigindi;
    text-align:center;
    padding: 70px ;
    background-color:blue;
+
      }
 
     </style>
 </head>
 <body><br><br><br><br><br><br><br><br><br><br><br>
     <hr><br><br><br><br>
-        <h1></h1>
+        <h1><?= $i . " "?> <br> <?= "<br>jami tup sonla  " . $a?></h1>
         <br><br><br><br> <hr>
 </body>
 </html>
