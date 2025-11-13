@@ -1,32 +1,26 @@
 <?php
-function salom($ism){
-    return "Salom qalaysiz    " . $ism ;
+function tubmi($son){
+    if($son<2)  
+    return false;
+    for($i=2; $i<=sqrt($son); $i++) {
+        if($son%$i==0)
+         return false;
+    }
+    return true;
 }
-$ism="Jony";
-echo salom ($ism);
+
+$n=3; 
+$yigindi=0;
+
+for ($i=$n;$i<=10;$i++) {
+    if(tubmi($i)){
+        echo $i . " ";
+        $yigindi+=$i;
+    }
+}
+
+echo "<br>Yig‘indisi: " . $yigindi;
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -46,15 +40,17 @@ echo salom ($ism);
      h1{
    color:red;
    border:10px solid green;
-   border-radius:50px;
-   text-align:center;-
-   padding: 20px ;
+   border-radius:5000px;
+   text-align:center;
+   padding: 70px ;
    background-color:blue;
      }
+
     </style>
 </head>
-<body>
-<!-- <h1><?=salom?></h1> -->
-<hr>
+<body><br><br><br><br><br><br><br><br><br><br><br>
+    <hr><br><br><br><br>
+        <h1></h1>
+        <br><br><br><br> <hr>
 </body>
 </html>
