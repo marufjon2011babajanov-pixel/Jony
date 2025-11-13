@@ -1,38 +1,6 @@
 <?php
-function salom($ism){
-    return "Salom qalaysiz    " . $ism ;
-}
-$ism="Jony";
-echo salom ($ism);
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +22,7 @@ echo salom ($ism);
     </style>
 </head>
 <body>
-<!-- <h1><?=salom?></h1> -->
+<h1><?=$i?></h1>
 <hr>
 </body>
 </html>
